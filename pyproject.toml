@@ -21,8 +21,10 @@ classifiers = [
 dependencies = []
 
 [project.optional-dependencies]
-mcp = ["mcp>=1.0"]
-dev = ["pytest>=7.0", "mcp>=1.0"]
+# The MCP SDK requires Python >=3.10; the core repo-radar stays 3.9-compatible.
+# On Python 3.9 this extra installs nothing and the MCP server is unavailable.
+mcp = ["mcp>=1.0; python_version >= '3.10'"]
+dev = ["pytest>=7.0", "mcp>=1.0; python_version >= '3.10'"]
 
 [project.scripts]
 repo-radar = "repo_radar.cli:main"
