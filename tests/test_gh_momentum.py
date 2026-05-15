@@ -1,7 +1,7 @@
 """Tests for gh-momentum.
 
 The scoring tests run fully offline. The single network test is opt-in:
-set ``REPO_RADAR_LIVE_TEST=1`` to enable it.
+set ``GH_MOMENTUM_LIVE_TEST=1`` to enable it.
 """
 import os
 
@@ -82,8 +82,8 @@ def test_mcp_server_imports():
 
 
 @pytest.mark.skipif(
-    os.getenv("REPO_RADAR_LIVE_TEST") != "1",
-    reason="network test — set REPO_RADAR_LIVE_TEST=1 to enable",
+    os.getenv("GH_MOMENTUM_LIVE_TEST") != "1",
+    reason="network test — set GH_MOMENTUM_LIVE_TEST=1 to enable",
 )
 def test_live_fetch_smoke():
     repos = find_momentum(days_back=14, min_stars=100, limit=5)
